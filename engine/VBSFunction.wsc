@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='windows-1251' standalone='yes'?>
+<component id='VbsFunction'>
+<registration progid='VBSFunction'/>
+<public><method name='vbs' dispid='0'/></public>
+
+<script language='VBScript'><![CDATA[
+Sub VbsEval(expression): PutVbsEvalResult(Eval(expression)): End Sub
+]]></script>
+
+<script language='JScript'><![CDATA[
+var VbsFuncArgs, VbsEvalResult;
+function PutVbsEvalResult(X) {VbsEvalResult=X;}
+function GetVbsFuncArgs(i) {return VbsFuncArgs[i];}
+
+function vbs(FuncName) {
+  return new Function(
+    'VbsFuncArgs=arguments;'+
+    'var count=VbsFuncArgs.length, Args=new Array(count);'+
+    'for (var i=count; --i>=0;) Args[i]="GetVbsFuncArgs("+i+")";'+
+    'VbsEval("' +FuncName+ '("+Args+")");'+
+    'var retVal=VbsEvalResult;'+
+    'VbsFuncArgs=null; VbsEvalResult=null;'+
+    'return retVal;'
+  );
+}
+]]></script>
+</component>

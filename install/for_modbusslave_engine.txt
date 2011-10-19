@@ -1,0 +1,4 @@
+0. Shure that you installed Office.
+1. go to http://www.modbustools.com/modbus_slave.asp
+2. Download Modbus Slave and install.
+3. Start the "PLCSim.hta"

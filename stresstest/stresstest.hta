@@ -1,0 +1,54 @@
+<HTML>
+<!-- 
+-->
+<HEAD>
+<META content = "TEXT/HTML; charset=Windows-1251">
+<TITLE>MB PLC Sim</TITLE>
+<HTA:APPLICATION ID="MBPLCSim"
+    ApplicationName = "MBPLCSim"
+/>
+	<script type="text/javascript">
+		var Status, oMBS, Show;
+		var RefreshPeriod = 1000;
+		var iBeginAddr = 16440;
+		//
+		function RefreshData(){
+			for(var i = 0; i < 2048; i++){
+				document.getElementById("reg"+i.toString()).innerHTML = oMBS.Register(i);
+			}
+		// Следующую строчку не удалять!!!
+		setTimeout("RefreshData()",RefreshPeriod);
+		}
+	</script>
+	<style>
+		DIV {
+			margin:0px;
+			padding: 0px;
+		}
+		.TagValueX{
+			margin:0px;
+			padding: 0px;
+			float: left;
+			display:inline;
+			position:absolute; left:100;
+			border: 1px solid black;
+			padding-left: 5px;
+			height: 20px;
+			width: 100px;
+			cursor: pointer;
+		}
+	</style>
+</HEAD>
+<BODY bgcolor = "#EEEEEE" onload="RefreshData()">
+	
+	<script type="text/javascript" >
+		for(var i = 0; i < 2048; i++){
+			document.write("<DIV>"+(i+iBeginAddr).toString()+" = "+"<DIV id='reg"+i.toString()+"' class='TagValueX'>E</DIV></DIV>")
+		}
+		oMBS = new ActiveXObject("mbslave.Document");
+		Status = oMBS.CreateSlave(1,3,iBeginAddr,2048);
+		oMBS.DisplayFormat = 2;
+		Show = oMBS.ShowWindow();
+	</script>
+</BODY>
+</HTML>
