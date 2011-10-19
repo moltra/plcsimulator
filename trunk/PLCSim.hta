@@ -1,0 +1,47 @@
+<HTML>
+<!-- 
+-->
+<HEAD>
+<META content = "TEXT/HTML; charset=Windows-1251">
+<TITLE>MB PLC Simulator</TITLE>
+<HTA:APPLICATION ID="MBPLCSim"
+    ApplicationName = "MBPLCSim"
+/>
+	<LINK rel="stylesheet" type="text/css" href="engine\style.css">
+	<script type="text/javascript" src="custom\Simulator.js"></script>
+	<script type="text/javascript" src="engine\interface.js"></script>
+	<script type="text/javascript" src="engine\modbusslave.js"></script>
+	<script type="text/javascript" src="custom\RefreshingTags.js"></script>
+	<script type="text/javascript" src="engine\xls_parser.js"></script>
+	<script type="text/javascript" src="engine\beckhoff.js"></script>
+</HEAD>
+<BODY bgcolor = "#EEEEEE" onkeydown="fnTrapKD()" onload="RefreshData()">
+	<script type="text/javascript">//DebugConsole(document.body,5,50);</script>
+	<TABLE class="maintable">
+	<COL span="2" valign=top>
+		<TR><TH colspan="2" align="left">
+		<INPUT type = "button" value = " EXIT " onClick="self.close();">
+		<INPUT type = "button" value = "RESTART" onClick="self.location.reload();"> PLC ModBus Simulator
+		<TR><!--TD><DIV id="leftmenu" class="leftmenu"></DIV></TD-->
+			<TD width="80%"><DIV id="data"></DIV></TD>
+		<TR><TH colspan="2"><a id="errors">no errors</a><br><a id="state">unknown</a>
+	</TABLE>
+	<script type="text/javascript" src="custom\settings.js"></script>
+	<script type="text/javascript" src="custom\Startup.js"></script>
+</BODY>
+</HTML>
+<!-- 
+	SCROLL = "YES"
+	SINGLEINSTANCE="yes"
+	INNERBORDER = "no"
+	SELECTION = "NO"
+	BORDER = "none"
+	SHOWINTASKBAR = "no"
+	MAXIMIZEBUTTON = "no"
+	MinimizeButton = "no"
+	CAPTION="no"
+	WINDOWSTATE="maximize"
+	NAVIGABLE = "yes"
+	SysMenu = "yes"
+	 CONTEXTMENU = "yes"
+-->
